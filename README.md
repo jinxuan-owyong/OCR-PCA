@@ -20,4 +20,4 @@ All code snippets used were referenced in comments where they were used in the c
 
 ## Further Improvements
 
-Current algorithm only outputs the digit with the lowest Euclidean distance. Possible to implement k-nearest neighbours by taking the most common digit among the k lowest Euclidean distances.
+Current algorithm only outputs the digit with the lowest Euclidean distance (Accuracy = 34.98%). Possible to implement k-nearest neighbours by taking the most common digit among the k lowest Euclidean distances.

@@ -8,13 +8,15 @@ function main()
     testImages = ocr.loadMNISTImages(ocr.getPath("TEI"));
     testLabels = ocr.loadMNISTLabels(ocr.getPath("TEL"));
     
-    numTest = 100;
+    %Pre-calculate weight of all images in training set
+    trainWeights = ocr.calcTrainWeights(trainImages);
+    numTest = 10000;
     numCorrect = 0;
     
     for i = 1:numTest
         image = ocr.toMatrix(testImages, i);
         label = testLabels(i);
-        prediction = ocr.findMinEuclidean(trainImages, trainLabels, image);
+        prediction = ocr.findMinEuclidean(trainImages, trainLabels, image, trainWeights);
         fprintf("Image Number: %i, Predicted Number: %i\n", label, prediction);
         if label == prediction
             numCorrect = numCorrect + 1;

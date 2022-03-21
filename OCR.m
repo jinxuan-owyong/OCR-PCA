@@ -7,6 +7,7 @@ classdef OCR
         TEST_IMAGE = "\\MNIST\\t10k-images.idx3-ubyte"
         TEST_LABEL = "\\MNIST\\t10k-labels.idx1-ubyte"
         IMAGE_SIZE = [28, 28];
+        IMAGE_HEIGHT = 28;
         i = 1;
     end
  
@@ -99,21 +100,27 @@ classdef OCR
             weight = dot(V, mean_M);
         end
         
-        function prediction = findMinEuclidean(obj, trainImages, trainLabels, testImage)
+        function trainWeights = calcTrainWeights(obj, trainImages)
+            [~, TW] = size(trainImages);
+            %Initialise empty matrix
+            trainWeights = zeros(obj.IMAGE_HEIGHT, TW);
+            for j = 1:TW
+                trainImage = obj.toMatrix(trainImages, j);
+                trainWeight = obj.calcImageWeight(trainImage);
+                trainWeights(:, j) = trainWeight';           
+            end
+        end
+        
+        function prediction = findMinEuclidean(obj, trainImages, trainLabels, testImage, trainWeights)
             [~, cols] = size(trainImages);
-            
-            testWeight = obj.calcImageWeight(testImage);
-            firstImage = obj.toMatrix(trainImages, 1);
-            firstWeight = obj.calcImageWeight(firstImage);
-            
+            testWeight = (obj.calcImageWeight(testImage))';
+                        
             %Calculate Euclidean distance between first image and test image
-            bestE = norm(testWeight - firstWeight);
+            bestE = norm(testWeight - trainWeights(:, 1));
             bestLabel = trainLabels(1, :);
             
             for j = 2:cols
-                newImage = obj.toMatrix(trainImages, j);
-                newWeight = obj.calcImageWeight(newImage);
-                newE = norm(testWeight - newWeight);
+                newE = norm(testWeight - trainWeights(:, j));
                 
                 %Replace if lower Euclidean distance
                 if newE < bestE
