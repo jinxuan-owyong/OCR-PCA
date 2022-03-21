@@ -10,6 +10,22 @@ Modify `numTest` in `main.m` line 11 to change the number of data points to your
 
 Execute `main.m` in MATLAB, with `OCR.m` and the `MNIST` folder in the same directory
 
+## Viewing the images
+
+`>> viewImage(dataSet, startIndex, endIndex)`
+
+`dataSet` - Either "train" or "test" to view the images from the training and test set respectively
+ 
+`startIndex` - Minimum: 1, must be less than or equal to `endIndex`
+
+`endIndex` - Maximum: The number of images in the data set chosen, must be greater than or equal to `startIndex`
+
+**Set output size**
+
+By default, MATLAB will output 16 images per window (4 x 4)
+
+To change this value, modify `FIG_WIDTH` in `viewImage.m` line 16 to the desired number of rows/columns.
+
 ## Acknowledgements
 
 OCR was based on the algorithm from [algosome.com](https://www.algosome.com/articles/optical-character-recognition-java.html)
