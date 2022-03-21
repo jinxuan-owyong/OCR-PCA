@@ -21,5 +21,5 @@ function main()
         end
     end
     
-    fprintf("Accuracy: %.2f\n", numCorrect / numTest);
+    fprintf("Accuracy: %.2f%%\n", numCorrect / numTest * 100);
 end
