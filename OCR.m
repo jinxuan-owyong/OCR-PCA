@@ -105,8 +105,8 @@ classdef OCR
             end
         end
         
-        function prediction = findMinEuclidean(obj, trainImages, trainLabels, testImage, trainWeights)
-            [~, cols] = size(trainImages);
+        function prediction = findMinEuclidean(obj, trainWeights, trainLabels, testImage)
+            [~, cols] = size(trainWeights);
             testWeight = (obj.calcImageWeight(testImage))';
                         
             %Calculate Euclidean distance between first image and test image

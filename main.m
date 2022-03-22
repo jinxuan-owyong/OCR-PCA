@@ -16,7 +16,7 @@ function main()
     for i = 1:numTest
         image = ocr.toMatrix(testImages, i);
         label = testLabels(i);
-        prediction = ocr.findMinEuclidean(trainImages, trainLabels, image, trainWeights);
+        prediction = ocr.findMinEuclidean(trainWeights, trainLabels, image);
         fprintf("Image Number: %i, Predicted Number: %i\n", label, prediction);
         if label == prediction
             numCorrect = numCorrect + 1;
