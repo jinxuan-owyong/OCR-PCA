@@ -30,7 +30,7 @@ To change this value, modify `FIG_WIDTH` in `viewImage.m` line 16 to the desired
 
 To visualise the eigenvectors of the images, we can convert them into eigenfaces. 
 
-To do so, the `imageType` parameter of `viewImage()` must be set to "face". The parameter can be left blank if 
+To do so, the `imageType` parameter of `viewImage()` must be set to "face". The parameter can be left blank to display the raw image.
 
 `>> viewImage("train", 1, 16, "face");`
 
