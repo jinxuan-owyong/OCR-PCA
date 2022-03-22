@@ -1,6 +1,4 @@
 classdef OCR
-    % to load images/labels
-    % images = OCR.loadMNISTImages(OCR.getPath("TRI"))
     properties (Access = private)
         TRAIN_IMAGE = "\\MNIST\\train-images.idx3-ubyte"
         TRAIN_LABEL = "\\MNIST\\train-labels.idx1-ubyte"
@@ -88,10 +86,6 @@ classdef OCR
 
             %Perform Eigen Decomposition
             [V, ~] = eig(C);
-
-            %Normalise each eigenvector to pixel values (0-255)
-%             normV = V - min(V(:));
-%             normV = 255 * normV ./ max(normV(:));
 
             %Calculate the mean centered matrix of the input image
             mean_M = bsxfun(@minus, M, mean(M));
