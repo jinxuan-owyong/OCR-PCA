@@ -26,6 +26,14 @@ By default, MATLAB will output 16 images per window (4 x 4)
 
 To change this value, modify `FIG_WIDTH` in `viewImage.m` line 16 to the desired number of rows/columns.
 
+**Visualising eigenvectors**
+
+To visualise the eigenvectors of the images, we can convert them into eigenfaces. 
+
+To do so, the `imageType` parameter of `viewImage()` must be set to "face". The parameter can be left blank if 
+
+`>> viewImage("train", 1, 16, "face");`
+
 ## Acknowledgements
 
 OCR was based on the algorithm from [algosome.com](https://www.algosome.com/articles/optical-character-recognition-java.html)
