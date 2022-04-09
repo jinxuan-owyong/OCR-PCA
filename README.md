@@ -6,9 +6,11 @@ OCR was performed using Prinicpal Component Analysis (PCA) of handwritten digits
 
 Change directory in MATLAB to the one containing `main.m`
 
-Modify `numTest` in `main.m` [line 13](main.m/#L13) to the number of test images to predict (Default = 10,000).
+`n` - The number of test images to predict
 
-Execute `main.m`, with `OCR.m` and the `MNIST` folder in the same directory
+```MATLAB
+>> main(n)
+```
 
 ## Viewing the images
 
@@ -34,7 +36,7 @@ To visualise the eigenvectors of the images, we can convert them into eigenfaces
 
 To do so, the `imageType` parameter of `viewImage()` must be set to "face". The parameter can be left blank to display the raw image.
 
-```Matlab
+```MATLAB
 >> viewImage("train", 1, 16, "face");
 ```
 
